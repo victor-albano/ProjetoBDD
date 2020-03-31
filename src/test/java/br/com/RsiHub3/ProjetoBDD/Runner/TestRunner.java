@@ -12,7 +12,7 @@ import cucumber.api.junit.Cucumber;
          features = "src/test/resources/Gherkin", 
          glue = {"br.com.RsiHub3.ProjetoBDD.Steps"},
          snippets = SnippetType.CAMELCASE ,
-         tags = "@PesquisaLupa"
+         tags = "@Login"
          )
 	
 	public class TestRunner {

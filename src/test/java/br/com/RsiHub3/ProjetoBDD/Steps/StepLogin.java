@@ -20,26 +20,21 @@ public class StepLogin {
 	private PaginaInicial paginaInicial = new PaginaInicial(driver);
 	private DriverFactory factory = new DriverFactory();
 	
-	@Before
-	public void setUp () {
+	@Given("^estou na tela inicial$")
+	public void estouNaTelaInicial() throws Throwable {
 		driver = factory.abrirChrome("http://advantageonlineshopping.com/#/");
 		new SmartWaits(driver).esperarPaginaCarregar();
 		paginaInicial = PageFactory.initElements(driver, PaginaInicial.class);
 	}
-	
-	@After
-	public void tearDown () {
-		factory.fecharChrome();
-	}
 
-	@Given("^clico na aba login$")
+	@When("^clico na aba login$")
 	public void clicoNaAbaLogin() throws Throwable {
 		paginaInicial.clicarJanelaDeLogin();
 	}
 
 	@When("^digita login valido$")
 	public void digitaLoginValido() throws Throwable {
-		paginaInicial.digitarLogin("Roger");
+		paginaInicial.digitarLogin("Victor");
 	}
 
 	@When("^digita senha valida$")
@@ -54,7 +49,8 @@ public class StepLogin {
 
 	@Then("^valida login efetuado com sucesso$")
 	public void validaLoginEfetuadoComSucesso() throws Throwable {
-		assertEquals("Roger", new PaginaInicial(driver).validacaoLoginEfetuado());
+		assertEquals("Victor", new PaginaInicial(driver).validacaoLoginEfetuado());
+		factory.fecharChrome();
 	}
 
 	@When("^digita login invalido$")
@@ -75,5 +71,6 @@ public class StepLogin {
 	@Then("^valida mensagem de usuario invalido$")
 	public void validaMensagemDeUsuarioInvalido() throws Throwable {
 		assertEquals("Incorrect user name or password.", paginaInicial.esperarPorMensagemDeValidacao());
+		factory.fecharChrome();
 	}
 }

@@ -1,8 +1,9 @@
 @Cadastro
-Feature: Cadastro Positivo
+Feature: Cadastro
 
 Background: 
-	Given usuario clica na tela login
+	Given estou pagina inicial
+	When usuario clica na tela login
 	When clica create new account
 	And preenche password
 	And preenche confirmacao de password

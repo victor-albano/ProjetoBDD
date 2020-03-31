@@ -21,18 +21,13 @@ public class StepPesquisaLupa {
 	private PaginaInicial paginaInicial = new PaginaInicial(driver);
 	private PaginaPesquisaMouse paginaPesquisa = new PaginaPesquisaMouse(driver);
 	private DriverFactory factory = new DriverFactory();
-
-	@Before
-	public void setUp () {
+	
+	@Given("^Estou na pagina inicial$")
+	public void estouNaPaginaInicial() throws Throwable {
 		driver = factory.abrirChrome("http://advantageonlineshopping.com/#/");
 		new SmartWaits(driver).esperarPaginaCarregar();
 		paginaInicial = PageFactory.initElements(driver, PaginaInicial.class);
 		paginaPesquisa = PageFactory.initElements(driver, PaginaPesquisaMouse.class);
-	}
-	
-	@After
-	public void tearDown () {
-		factory.fecharChrome();
 	}
 	
 	@Given("^Usuario clica na lupa$")
@@ -64,6 +59,7 @@ public class StepPesquisaLupa {
 	public void validaTituloDoProduto() throws Throwable {
 		paginaPesquisa.EsperaParaPrint();
 		assertEquals("HP USB 3 BUTTON OPTICAL MOUSE", paginaPesquisa.validandoMouseEspecifico());
+		factory.fecharChrome();
 	}
 	
 	@When("^usuario digita produto invalido$")
@@ -85,5 +81,6 @@ public class StepPesquisaLupa {
 	public void validaMensagemDeProdutoNaoEncontrado() throws Throwable {
 		paginaPesquisa.EsperaParaPrint();
 		assertEquals("No results for \"Produto\"", paginaPesquisa.mensagemProdutoNaoEncontrado());
+		factory.fecharChrome();
 	}
 }

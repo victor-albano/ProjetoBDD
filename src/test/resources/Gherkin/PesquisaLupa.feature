@@ -2,7 +2,8 @@
 Feature: Pesquisa Lupa
 
 Background: 
-	Given Usuario clica na lupa
+	Given Estou na pagina inicial
+	When Usuario clica na lupa
 
 @Positivo
 Scenario: Pesquisa Lupa Com Sucesso

@@ -1,7 +1,8 @@
 @Login
-Feature: Login Positivo
+Feature: Login
 
 Background: 
+	Given estou na tela inicial
 	Given clico na aba login
 
 @Positivo
