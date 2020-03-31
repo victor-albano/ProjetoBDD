@@ -84,6 +84,7 @@ public class PaginaDeCadastro extends BasePage {
 	
 	public PaginaInicial confirmarCadastro () {
 		driver.findElement(By.id("register_btnundefined")).click();
+		driver.findElement(By.id("register_btnundefined")).click();
 		return new PaginaInicial(driver);
 	}
 	

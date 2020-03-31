@@ -32,8 +32,8 @@ public class StepLogin {
 		factory.fecharChrome();
 	}
 
-	@Given("^usuario clica na aba login$")
-	public void usuarioClicaNaAbaLogin() throws Throwable {
+	@Given("^clico na aba login$")
+	public void clicoNaAbaLogin() throws Throwable {
 		paginaInicial.clicarJanelaDeLogin();
 	}
 
@@ -55,5 +55,25 @@ public class StepLogin {
 	@Then("^valida login efetuado com sucesso$")
 	public void validaLoginEfetuadoComSucesso() throws Throwable {
 		assertEquals("Roger", new PaginaInicial(driver).validacaoLoginEfetuado());
+	}
+
+	@When("^digita login invalido$")
+	public void digitaLoginInvalido() throws Throwable {
+		paginaInicial.digitarLogin("victor");
+	}
+
+	@When("^digita senha invalida$")
+	public void digitaSenhaInvalida() throws Throwable {
+		paginaInicial.digitarSenha("Senhainvalida");
+	}
+
+	@When("^clica botao login$")
+	public void clicaBotaoLogin() throws Throwable {
+		paginaInicial.clicarSignIn();
+	}
+
+	@Then("^valida mensagem de usuario invalido$")
+	public void validaMensagemDeUsuarioInvalido() throws Throwable {
+		assertEquals("Incorrect user name or password.", paginaInicial.esperarPorMensagemDeValidacao());
 	}
 }

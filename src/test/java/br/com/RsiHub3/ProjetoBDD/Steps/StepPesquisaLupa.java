@@ -65,4 +65,25 @@ public class StepPesquisaLupa {
 		paginaPesquisa.EsperaParaPrint();
 		assertEquals("HP USB 3 BUTTON OPTICAL MOUSE", paginaPesquisa.validandoMouseEspecifico());
 	}
+	
+	@When("^usuario digita produto invalido$")
+	public void usuarioDigitaProdutoInvalido() throws Throwable {
+		paginaInicial.pesquisarProdutoInvalido();
+	}
+
+	@When("^confirma busca$")
+	public void confirmaBusca() throws Throwable {
+		paginaInicial.clicarEnterNaPesquisa();
+	}
+
+	@When("^fecha busca$")
+	public void fechaBusca() throws Throwable {
+		paginaPesquisa.fecharBusca();
+	}
+
+	@Then("^valida mensagem de produto nao encontrado$")
+	public void validaMensagemDeProdutoNaoEncontrado() throws Throwable {
+		paginaPesquisa.EsperaParaPrint();
+		assertEquals("No results for \"Produto\"", paginaPesquisa.mensagemProdutoNaoEncontrado());
+	}
 }

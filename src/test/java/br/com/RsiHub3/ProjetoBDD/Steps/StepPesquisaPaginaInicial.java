@@ -2,6 +2,7 @@ package br.com.RsiHub3.ProjetoBDD.Steps;
 
 import static org.junit.Assert.assertEquals;
 
+import org.junit.AfterClass;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 

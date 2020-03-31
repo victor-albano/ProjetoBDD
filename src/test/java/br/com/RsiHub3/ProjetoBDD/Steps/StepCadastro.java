@@ -119,6 +119,26 @@ public class StepCadastro {
 
 	@Then("^valida cadastro efetuado$")
 	public void validaCadastroEfetuado() throws Throwable {
-		assertEquals("FernandesAlbano17", new PaginaInicial(driver).validacaoLoginEfetuado());
+		assertEquals("VictorAlbano17", new PaginaInicial(driver).validacaoLoginEfetuado());
+	}
+	
+	@When("^preenche user name invalido$")
+	public void preencheUserNameInvalido() throws Throwable {
+		paginaDeCadastro.digitarUserName(excel.getUserNameErrado());
+	}
+
+	@When("^preenche email invalido$")
+	public void preencheEmailInvalido() throws Throwable {
+		paginaDeCadastro.digitarEmail(excel.getEmailErrado());
+	}
+
+	@When("^clica botao register$")
+	public void clicaBotaoRegister() throws Throwable {
+		paginaDeCadastro.confirmarCadastro();
+	}
+
+	@Then("^valida mensagem de cadastro nao efetuado$")
+	public void validaMensagemDeCadastroNaoEfetuado() throws Throwable {
+		assertEquals("User name already exists", new PaginaDeCadastro(driver).mensagemCadastroSemSucesso());
 	}
 }
